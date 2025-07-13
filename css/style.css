@@ -26,21 +26,10 @@ h2 {
 
 main section {
     background: #282c34; /* Consistent with header background */
-    color: #abb2bf;
     padding: 20px;
     margin: 20px auto;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25); /* Slightly adjusted shadow */
-    max-width: 800px;
-}
-
-.intro { /* If you have a specific intro section, it can inherit from main section or have its own */
-    background: #252526; /* Consistent with header/footer background */
-    color: #d4d4d4;
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Darker shadow for dark theme */
     max-width: 800px;
 }
 
@@ -67,7 +56,6 @@ footer {
     text-align: center;
     padding: 10px 0;
     background: #282c34; /* Consistent with header */
-    color: #abb2bf; /* Changed to match body text color */
     width: 100%;
     margin-top: 30px;
 }
