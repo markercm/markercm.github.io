@@ -1,36 +1,122 @@
 /* General Styles - Mariana Pro Cool Theme */
+:root {
+    /* Color palette */
+    --bg-primary: #1e222a;
+    --bg-secondary: #282c34;
+    --text-primary: #abb2bf;
+    --text-secondary: #d1d9e0;
+    --accent-blue: #61afef;
+    --accent-green: #98c379;
+    --accent-red: #e06c75;
+    --accent-red-hover: #c75660;
+
+    /* Typography */
+    --font-family-base: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-base: 1rem;
+    --line-height-base: 1.6;
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    /* Layout */
+    --max-width-content: 800px;
+    --border-radius: 0.5rem;
+    --shadow-light: 0 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
     margin: 0;
     padding: 0;
-    background-color: #1e222a; /* Slightly cooler dark background */
-    color: #abb2bf; /* Common light grey/cool text color */
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Skip link for accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--accent-blue);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    z-index: 1000;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 6px;
 }
 
 header {
-    background: #282c34;
-    color: #d1d9e0; /* Default text in header, h1 will override */
-    padding: 10px 0;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    padding: var(--spacing-lg) 0;
     text-align: center;
+}
+
+.tagline {
+    margin: var(--spacing-xs) 0 0 0;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 300;
 }
 
 h1 {
     margin: 0;
-    font-size: 2.5em;
-    color: #61afef; /* Cool blue */
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    color: var(--accent-blue);
+    font-weight: 600;
 }
 
 h2 {
-    color: #98c379; /* Mariana-like green */
+    color: var(--accent-green);
+    font-size: clamp(1.5rem, 4vw, 1.8rem);
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+}
+
+main {
+    padding: 0 var(--spacing-sm);
 }
 
 main section {
-    background: #282c34; /* Consistent with header background */
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25); /* Slightly adjusted shadow */
-    max-width: 800px;
+    background: var(--bg-secondary);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    max-width: var(--max-width-content);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    main {
+        padding: 0 var(--spacing-xs);
+    }
+
+    main section {
+        padding: var(--spacing-md);
+        margin: var(--spacing-md) auto;
+    }
+
+    header {
+        padding: var(--spacing-md) 0;
+    }
 }
 
 .profile-picture {
@@ -39,23 +125,77 @@ main section {
     border-radius: 50%;
     object-fit: cover;
     display: block;
-    margin: 0 0 15px 0; /* Left aligned */
+    margin: 0 0 var(--spacing-sm) 0;
+    border: 3px solid var(--accent-blue);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.profile-picture:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(97, 175, 239, 0.3);
+}
+
+@media (max-width: 480px) {
+    .profile-picture {
+        width: 120px;
+        height: 120px;
+    }
 }
 
 a {
-    color: #e06c75; /* Mariana-like red for links */
+    color: var(--accent-red);
     text-decoration: none;
+    transition:
+        color 0.2s ease,
+        text-decoration 0.2s ease;
 }
 
-a:hover {
-    color: #c75660; /* A slightly darker/muted red for hover */
+a:hover,
+a:focus {
+    color: var(--accent-red-hover);
     text-decoration: underline;
+}
+
+a:focus {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 
 footer {
     text-align: center;
-    padding: 10px 0;
-    background: #282c34; /* Consistent with header */
+    padding: var(--spacing-lg) 0;
+    background: var(--bg-secondary);
     width: 100%;
-    margin-top: 30px;
+    margin-top: var(--spacing-xl);
+    border-top: 1px solid rgba(171, 178, 191, 0.1);
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+/* Focus management for better accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --bg-primary: #000000;
+        --bg-secondary: #1a1a1a;
+        --text-primary: #ffffff;
+        --text-secondary: #ffffff;
+    }
 }
